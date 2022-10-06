@@ -28,4 +28,4 @@ function rot13(str) {
     return decodedStr.join("");
   }
   
-  rot13("SERR PBQR PNZC");
+  console.log(rot13("GUR DHVPX OEBJA SBK WHZCF BIRE GUR YNML QBT."));
