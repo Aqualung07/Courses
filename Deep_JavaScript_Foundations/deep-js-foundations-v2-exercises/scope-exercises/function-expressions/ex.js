@@ -105,7 +105,7 @@ function remindUnpaid(recordIds) {
 // 					PART 2						|
 // **********************************************
 
-// function printRecords(recordIds) {
+// const printRecords = recordIds => {
 
 // 	let studentPrintableRecord = [];
 
@@ -122,7 +122,7 @@ function remindUnpaid(recordIds) {
 // 	return console.log(studentPrintableRecord);
 // }
 
-// function paidStudentsToEnroll() {
+// const paidStudentsToEnroll = () => {
 
 // 	const paidStudentsToEnrollRecord = [
 // 		...studentRecords.map((student) => {
@@ -136,14 +136,13 @@ function remindUnpaid(recordIds) {
 // 	return paidStudentsToEnrollRecord;
 // }
 
-// function remindUnpaid(recordIds) {
+// const remindUnpaid = recordIds => {
 
 // 	const unpaidStudentsRecord = studentRecords.map((student) => {
 // 		if (recordIds.indexOf(student.id) !== -1 && !student.paid) return student.id;
 // 	});
 
 // 	return printRecords(unpaidStudentsRecord);
-
 // }
 
 
