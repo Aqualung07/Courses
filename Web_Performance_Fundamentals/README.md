@@ -20,7 +20,3 @@ Open a browser at [http://localhost:3000/](http://localhost:3000/) to view the w
 ## Related Resources:
 
 - [Slides and Materials](https://drive.google.com/drive/folders/13sdKqO8O2L1yr6th9HgPwpncZwTpEPGl?usp=sharing)
-=======
-# Courses
-# This repo is dedicated to Courses, certifications and any Software Development formation
->>>>>>> 3a527d5a47d238c9980631a61af4727d69b063b3
