@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Fundamentals of Web Performance Demo Website
 
 <p align="center">
@@ -20,3 +19,15 @@ Open a browser at [http://localhost:3000/](http://localhost:3000/) to view the w
 ## Related Resources:
 
 - [Slides and Materials](https://drive.google.com/drive/folders/13sdKqO8O2L1yr6th9HgPwpncZwTpEPGl?usp=sharing)
+
+## NOTES
+
+<b>CDN</b> => Content Distribution Network. Used to cache and deliver file content to users so that the data doesn't have to travel so much distance, decreasing the time that files take to be served to the client.
+
+<b>LCS</b> => Largest Contentful Paint. Time that takes to load the actual meaningful content of the page.
+
+<b>FCP</b> => First Contentful Paint. Time that takes to load the first element that gives a hint that the page is loading.
+
+<b>CLS</b> => Cumulative Layout Shift. Total amount of element shifting during the session.
+
+<b>FID</b> => First Input Delay. Time that takes to start processing the first input that the user gives the page.
