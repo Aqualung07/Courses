@@ -24,7 +24,7 @@ Open a browser at [http://localhost:3000/](http://localhost:3000/) to view the w
 
 <b>CDN</b> => Content Distribution Network. Used to cache and deliver file content to users so that the data doesn't have to travel so much distance, decreasing the time that files take to be served to the client.
 
-<b>LCS</b> => Largest Contentful Paint. Time that takes to load the actual meaningful content of the page.
+<b>LCS</b> => Largest Contentful Paint. Time until the user sees most of the page and believes it is (almost) ready.
 
 <b>FCP</b> => First Contentful Paint. Time that takes to load the first element that gives a hint that the page is loading.
 
