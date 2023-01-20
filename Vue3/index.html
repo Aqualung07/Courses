@@ -1,10 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body></body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Most awesome TV show ever!</title>
+</head>
+<body>
+
+    <div id="app">
+        <h1>{{tvShowName.toUpperCase()}}</h1>
+        <div v-if="tvShowCharacters.length > 0">
+            <ul v-for="character in tvShowCharacters">
+                <li v-for="(value, key) in character"><b>{{key.toUpperCase()}}:</b> {{value}}</li>
+            </ul>
+        </div>
+        <div v-else>
+            <p>No characters on the show.</p>
+        </div>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        const app = createApp({
+            data() {
+                return {
+                    tvShowName: 'The meows',
+                    tvShowCharacters: [
+                        {name: 'Jack', color: 'Black & White', attitude: 'Loving'},
+                        {name: 'Lluna', color: 'White', attitude: 'Calm'},
+                        {name: 'Seth', color: 'Black', attitude: 'Restless'},
+                        {name: 'Wendy', color: 'Light Brown', attitude: 'Restless'},
+                        {name: 'Coco', color: 'Multi Color', attitude: 'Kind'},
+                    ]
+                }
+            }
+        })
+
+        app.mount('#app');
+    </script>
+</body>
 </html>
