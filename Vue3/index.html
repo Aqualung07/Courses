@@ -10,15 +10,75 @@
 <body>
 
     <div id="app">
-        <h1>{{tvShowName.toUpperCase()}}</h1>
-        <div v-if="tvShowCharacters.length > 0">
-            <ul v-for="character in tvShowCharacters">
-                <li v-for="(value, key) in character"><b>{{key.toUpperCase()}}:</b> {{value}}</li>
-            </ul>
+        <h1>{{displayTitleUponAge.toUpperCase()}}</h1>
+        <div style="display:flex; flex-flow: row wrap; gap:10%">
+          <div>
+            
+            <div v-if="tvShowCharacters.length > 0">
+              <ul v-for="character in tvShowCharacters">
+                  <li v-for="(value, key) in character">
+                    <b>{{key.toUpperCase()}}:</b> {{value}}
+                  </li>
+                  <button @click="favCharacter(character)">Add to favs</button>
+              </ul>
+            </div>
+            
+            <div v-else-if="tvShowCharacters.length === 0">
+                <p>No characters on the show.</p>
+            </div>
+          
+          </div>
+
+          <div>
+            
+            <form @submit="createCharacter">
+              <div style="display: flex; flex-flow: column wrap; gap:0.5rem;">
+                <label for="name"><b>Name</b></label>
+                <input v-model="activeCharacterForm.name" name="name" type="text">
+              </div>
+              
+              <div style="display: flex; flex-flow: column wrap; gap:0.5rem;">
+                <label for="color"><b>Color</b></label>
+                <input v-model="activeCharacterForm.color" name="color" type="text">
+              </div>
+              
+              <div style="display: flex; flex-flow: column wrap; gap:0.5rem;">
+                <label for="attitude"><b>Attitude</b></label>
+                <input v-model="activeCharacterForm.attitude" name="attitude" type="text">
+              </div>
+
+              <div style="display: flex; flex-flow: column wrap; gap:0.5rem;">
+                <label for="attitude"><b>Age</b></label>
+                <input v-model="activeCharacterForm.age" name="age" type="number">
+              </div>
+              
+              <button type="submit">Create</button>
+            </form>
+            
+          </div>
+
+          <div>
+            <h2>STATS</h2>
+            <hr/>
+            <h3>Average age: </h3>
+            <p>{{ averageAge }}</p>
+          </div>
         </div>
-        <div v-else>
-            <p>No characters on the show.</p>
+
+        <hr/>
+
+        <h2>FAVORITE CHARACTERS</h2>
+        <div v-if="favCharacterList.length > 0">
+          <ul v-for="favCharacter in favCharacterList">
+            <li v-for="(value, key) in favCharacter">
+              <b>{{key.toUpperCase()}}:</b> {{value}}
+            </li>
+            <button @click="unfavCharacter(favCharacter)">Remove</button>
+          </ul>
         </div>
+
+        <p v-else>No characters added to Fav</p>
+
     </div>
 
     <script>
@@ -29,13 +89,53 @@
                 return {
                     tvShowName: 'The meows',
                     tvShowCharacters: [
-                        {name: 'Jack', color: 'Black & White', attitude: 'Loving'},
-                        {name: 'Lluna', color: 'White', attitude: 'Calm'},
-                        {name: 'Seth', color: 'Black', attitude: 'Restless'},
-                        {name: 'Wendy', color: 'Light Brown', attitude: 'Restless'},
-                        {name: 'Coco', color: 'Multi Color', attitude: 'Kind'},
-                    ]
+                        {name: 'Jack', color: 'Black & White', attitude: 'Loving', age: 5},
+                        {name: 'Lluna', color: 'White', attitude: 'Calm', age: 4},
+                        {name: 'Seth', color: 'Black', attitude: 'Restless', age: 3},
+                        {name: 'Wendy', color: 'Light Brown', attitude: 'Restless', age: 2},
+                        {name: 'Coco', color: 'Multi Color', attitude: 'Kind', age: 1},
+                    ],
+                    favCharacterList : [],
+                    activeCharacterForm: {
+                      name: "",
+                      color: "",
+                      attitude: "",
+                      age: 0
+                    }
                 }
+            },
+            computed: {
+              averageAge() {
+                return (this.tvShowCharacters.reduce((totalAge, char) => {
+                  return totalAge += char.age;
+                }, 0) / this.tvShowCharacters.length).toFixed(0);
+              },
+              displayTitleUponAge() {
+                if (this.averageAge > 10) return "THE MEOWS - OLD";
+                return this.tvShowName;
+              }
+            },
+            methods: {
+              favCharacter(character) {
+                this.favCharacterList.push({...character});
+              },
+              unfavCharacter(character) {
+                this.favCharacterList.splice(this.favCharacterList.indexOf(character), 1);
+              },
+              createCharacter(event) {
+                event.preventDefault();
+                this.tvShowCharacters = [...this.tvShowCharacters, {...this.activeCharacterForm}];
+                console.log(this.tvShowCharacters);
+                this.activeCharacterForm = {name:"", color:"", attitude:""};
+              }
+            },
+            watch: {
+              tvShowCharacters(newValue) {
+                if (newValue.length > 6) {
+                  return this.tvShowName += ' - long';
+                }
+                this.tvShowName = 'The meows';
+              }
             }
         })
 
