@@ -1,0 +1,23 @@
+{
+	"name": "mcp-typescript-server",
+	"version": "1.0.0",
+	"main": "./dist/index.js",
+	"type": "module",
+	"scripts": {
+		"build": "tsc",
+		"dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+		"start": "chmod +x scripts/run.sh && ./scripts/run.sh"
+	},
+	"author": "Pablo Silva",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"@modelcontextprotocol/inspector": "^0.16.1",
+		"@modelcontextprotocol/sdk": "^1.16.0"
+	},
+	"devDependencies": {
+		"nodemon": "^3.0.2",
+		"ts-node": "^10.9.1",
+		"typescript": "^5.8.3"
+	}
+}
