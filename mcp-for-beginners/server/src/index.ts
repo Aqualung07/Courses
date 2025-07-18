@@ -1,5 +1,5 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { z } from "zod";
 
 // Create an MCP server
@@ -15,15 +15,14 @@ server.registerTool("add",
     description: "Performs basic addition",
     inputSchema: { a: z.number(), b: z.number() }
   },
-  async ({ a, b }) => ({
-    content: [{ type: "text", text: String(a + b) }]
-  })
+  async ({ a, b }) => {
+    console.log(`Received: a=${a}, b=${b}`);
+    return {
+      content: [{ type: "text", text: String(a + b) }]
+    };
+  }
 );
 
-// Start receiving messages over HTTP
-// Stateless mode - explicitly set session ID to undefined
-const statelessTransport = new StreamableHTTPServerTransport({
-  sessionIdGenerator: undefined,
-});
+const transport = new StdioServerTransport();
 
-await server.connect(statelessTransport);
+await server.connect(transport);

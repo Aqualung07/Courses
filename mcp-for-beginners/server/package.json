@@ -5,8 +5,8 @@
 	"type": "module",
 	"scripts": {
 		"build": "tsc",
-		"dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
-		"start": "chmod +x scripts/run.sh && ./scripts/run.sh"
+		"server-dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+		"inspect": "chmod +x scripts/inspector.sh && ./scripts/inspector.sh"
 	},
 	"author": "Pablo Silva",
 	"license": "ISC",

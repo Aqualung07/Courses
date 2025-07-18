@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Check if node_modules exists
-if [ ! -d "node_modules" ]; then
+if [ ! -d "./server/node_modules" ]; then
     echo "Installing dependencies..."
     npm install
 fi
@@ -10,4 +10,4 @@ fi
 npm run build
 
 # Run the server with inspector
-npx @modelcontextprotocol/inspector node dist/index.js
+npx @modelcontextprotocol/inspector node ./server/dist/index.js
