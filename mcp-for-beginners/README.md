@@ -9,6 +9,7 @@ A simple Model Context Protocol (MCP) implementation in TypeScript that demonstr
 -   Built with MCP SDK
 -   Type-safe schema validation using Zod
 -   Interactive command-line interface
+-   Optional LLM client integrating with OpenAI
 
 ## Prerequisites
 
@@ -37,16 +38,30 @@ A simple Model Context Protocol (MCP) implementation in TypeScript that demonstr
     cd client && npm install
     ```
 
-4.  Build and start the server:
+4.  Install LLM client dependencies:
 
     ```bash
-    cd server && npm start
+    cd llm-client && npm install
     ```
 
-5.  In a separate terminal, run the client:
+5.  Copy the example environment file and configure OpenAI credentials:
+
+    ```bash
+    cd llm-client
+    cp .env.example .env
+    # edit .env with your OPEN_AI_API_KEY and OPEN_AI_SERVER_URL
+    ```
+
+6.  In a separate terminal, run the client (will automatically build and launch the server):
 
     ```bash
     cd client && npm run client
+    ```
+
+7.  To try the LLM client instead:
+
+    ```bash
+    cd llm-client && npm run client
     ```
 
 ## Development
